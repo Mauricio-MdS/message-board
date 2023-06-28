@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "deploy": "flyctl deploy",
+    "dev": "nodemon start",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -12,5 +14,8 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.2.16"
   }
 }
