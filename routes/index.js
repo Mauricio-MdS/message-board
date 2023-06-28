@@ -1,32 +1,22 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+const Message = require("../models/message");
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date()
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date()
-  }
-];
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Message Board', messages: messages });
+/* GET Message Board*/
+router.get("/", function (req, res, next) {
+  Message.find().sort({ createdAt: -1 }).then((data) =>
+    res.render("index", { title: "Message Board", messages: data })
+  );
 });
 
-router.get('/new', function(req, res, next) {
-  res.render('form');
+/* GET New message form. */
+router.get("/new", function (req, res, next) {
+  res.render("form");
 });
 
-router.post('/new', function(req, res, next) {
-  const added = new Date();
-  messages.push({...req.body, "added": added })
-  res.redirect('/');
+/* Post Message. */
+router.post("/new", function (req, res, next) {
+  Message.create({ ...req.body }).then(() => res.redirect("/"));
 });
 
 module.exports = router;
