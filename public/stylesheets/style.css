@@ -87,3 +87,13 @@ a {
   font-style: italic;
   color: #888;
 }
+
+.error {
+  background-color: #ffdcdc;
+  border: 1px solid #ff8080;
+  border-radius: 4px;
+  padding: 10px;
+  color: #ff8080;
+  margin-bottom: 10px;
+  font-size: 14px;
+}

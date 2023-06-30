@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leave your message</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
@@ -11,8 +11,32 @@
       <h1>Leave a message</h1>
     </header>
     <form method="POST" action="/new">
-      <input type="text" name="user" id="user" required placeholder="Name" maxlength="30"/>
-      <textarea name="text" id="text" required placeholder="Message" maxlength="140"></textarea>
+      <input
+        type="text"
+        name="user"
+        id="user"
+        placeholder="Name"
+        required
+        maxlength="30"
+        minlength="3"
+      />
+      <textarea
+        name="text"
+        id="text"
+        placeholder="Message"
+        required
+        maxlength="140"
+        minlength="3"
+      ></textarea>
+      <% if (errors) { %>
+      <div class="error">
+        <% if (errors.user) { %>
+        <p><%= errors.user%></p>
+        <% } %> <% if (errors.text) { %>
+        <p><%= errors.text%></p>
+        <% } %>
+      </div>
+      <% } %>
       <button type="submit">Submit</button>
       <a href="/" class="cancel-button">Cancel</a>
     </form>
