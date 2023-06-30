@@ -9,6 +9,28 @@ h1 {
   color: #333;
 }
 
+.created-by-bar {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+.created-by-bar p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.created-by-bar a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.created-by-bar a:hover {
+  text-decoration: underline;
+}
+
 form {
   margin-top: 20px;
 }
