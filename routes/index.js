@@ -1,28 +1,14 @@
 var express = require("express");
 var router = express.Router();
-const Message = require("../models/message");
+const messageController = require("../controllers/messageController")
 
 /* GET Message Board*/
-router.get("/", function (req, res, next) {
-  Message.find()
-    .sort({ createdAt: -1 })
-    .then((data) =>
-      res.render("index", { title: "Message Board", messages: data })
-    );
-});
+router.get("/", messageController.messages);
 
 /* GET New message form. */
-router.get("/new", function (req, res, next) {
-  res.render("form", { errors: null });
-});
+router.get("/new", messageController.messageForm);
 
-/* Post Message. */
-router.post("/new", function (req, res, next) {
-  Message.create({ ...req.body })
-    .then(() => res.redirect("/"))
-    .catch((error) => {
-      res.render("form", { errors: error.errors });
-    });
-});
+/* POST Message. */
+router.post("/new", messageController.createMessage);
 
 module.exports = router;
